@@ -1,0 +1,124 @@
+[{
+  "text": "1",
+  "value": "1",
+  "collapsed": false,
+  "checked": false,
+  "children": [
+  {
+    "text": "1-1",
+    "value": "1-1",
+    "collapsed": false,
+    "checked": false
+  }, 
+  {
+    "text": "1-2",
+    "value": "1-2",
+    "collapsed": false,
+    "checked": false,
+    "children": [
+    {
+      "text": "1-2-1",
+      "value": "1-2-1",
+      "collapsed": false,
+      "checked": false
+    },
+    {
+      "text": "1-2-2",
+      "value": "1-2-2",
+      "collapsed": false,
+      "checked": false
+    }]
+  }]
+},
+{
+  "text": "2",
+  "value": "2",
+  "collapsed": false,
+  "checked": false,
+  "children": [
+  {
+    "text": "2-1",
+    "value": "2-1",
+    "collapsed": false,
+    "checked": false,
+    "children": [
+    {
+      "text": "2-1-1",
+      "value": "2-1-1",
+      "collapsed": false,
+      "checked": false
+    },
+    {
+      "text": "2-1-2",
+      "value": "2-1-2",
+      "collapsed": false,
+      "checked": false
+    }]
+  }, 
+  {
+    "text": "2-2",
+    "value": "2-2",
+    "collapsed": false,
+    "checked": false,
+    "children": [
+    {
+      "text": "2-2-1",
+      "value": "2-2-1",
+      "collapsed": false,
+      "checked": false
+    }]
+  }]
+},
+{
+  "text": "3",
+  "value": "3",
+  "collapsed": false,
+  "checked": false,
+  "children": [
+  {
+    "text": "3-1",
+    "value": "3-1",
+    "collapsed": false,
+    "checked": false,
+    "children": [
+    {
+      "text": "3-1-1",
+      "value": "3-1-1",
+      "collapsed": false,
+      "checked": false,
+      "children": [
+      {
+        "text": "3-1-1-1",
+        "value": "3-1-1-1",
+        "collapsed": false,
+        "checked": false
+      },
+      {
+        "text": "3-1-1-2",
+        "value": "3-1-1-2",
+        "collapsed": false,
+        "checked": false
+      }]
+    }]
+  }]
+},
+{
+  "text": "4",
+  "value": "4",
+  "collapsed": false,
+  "checked": false,
+  "children": [
+  {
+    "text": "4-1",
+    "value": "4-1",
+    "collapsed": false,
+    "checked": false,
+    "children": [
+    {
+      "text": "4-1-1",
+      "value": "4-1-1",
+      "collapsed": false,
+      "checked": false
+    }]
+  }]
+}]
