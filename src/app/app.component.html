@@ -1,0 +1,29 @@
+<div>
+  <nav class="navbar navbar-expand navbar-dark bg-dark">
+    <a href="#" class="navbar-brand">MEANPractical</a>
+    <ul class="navbar-nav mr-auto" *ngIf="isLoggedIn">
+      <li class="nav-item" >
+        <a class="nav-link" routerLink="blog">Blog</a>
+      </li>
+    </ul>
+    <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="register">Sign Up</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="login">Sign In</a>
+      </li>
+    </ul>
+    <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
+      <li class="nav-item">
+        <a class="nav-link">{{ email }}({{role}})</a>
+      </li>
+      <li class="nav-item">
+        <a href class="nav-link" (click)="logout();">LogOut</a>
+      </li>
+    </ul>
+  </nav>
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
+</div>

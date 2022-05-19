@@ -1,0 +1,57 @@
+<div class="col-md-6" style="margin: 0 auto;">
+  <div class="card card-container" style="border: none;">
+    <h1 style="margin: 20px 0; text-align: center; font-size: 36px; font-weight: 700;">
+      {{PageHeader}} Blog
+    </h1>
+    <form *ngIf="!isSuccessful" name="form" (ngSubmit)="f.form.valid && onCreateUpdate()" #f="ngForm" novalidate>
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" name="title" [(ngModel)]="form.title" #title="ngModel" class="form-control" required>
+        <div class="alert" *ngIf="title.errors && f.submitted" style="color: red;padding: 8px 0px;">
+          <div *ngIf="title.errors.required">Title is required</div>
+        </div>
+
+      </div>
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea name="description" [(ngModel)]="form.description" #description="ngModel" required class="form-control"></textarea>
+        <div class="alert" *ngIf="description.errors && f.submitted" style="color: red;padding: 8px 0px;">
+          <div *ngIf="description.errors.required">Description is required</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="status">Status</label>
+        <select name="status" [(ngModel)]="form.status" #status="ngModel" required class="form-control">
+          <option value="">Select Status</option>
+          <option value="Publish">Publish</option>
+          <option value="UnPublish">UnPublish</option>
+        </select>
+        <div class="alert" *ngIf="status.errors && f.submitted" style="color: red;padding: 8px 0px;">
+          <div *ngIf="status.errors.required">Status is required</div>
+          <!-- <div *ngIf="Status.errors.email">Provide valid Status</div> -->
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="modify_date">ModifyDate</label>
+        <input type="date" name="modify_date" [(ngModel)]="form.modify_date" #modify_date="ngModel" required class="form-control">
+        <div class="alert" *ngIf="modify_date.errors && f.submitted" style="color: red;padding: 8px 0px;">
+          <div *ngIf="modify_date.errors.required">ModifyDate is required</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="category">Category</label>
+        <ngx-treeview [config]="config" [items]="items" (selectedChange)="onSelectedChange($event)">
+        </ngx-treeview>
+      </div>
+      
+
+
+      <div class="form-group">
+        <button class="btn btn-primary btn-block">Submit</button>
+      </div>
+      <div class="alert" *ngIf="isCreateUpdateFailed" style="color: grey; padding: 8px 0px;">
+        Signup failed!<br /> {{errorMessage}}
+      </div>
+    </form>
+  </div>
+</div>

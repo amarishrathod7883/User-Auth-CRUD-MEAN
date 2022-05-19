@@ -1,0 +1,89 @@
+<div class="container">
+  <header class="jumbotron">
+    <h3><strong>Blog</strong> List</h3>
+  </header>
+  <div class="form-group col-md-2" style="float: right;">
+    <button class="btn btn-primary btn-block" routerLink="/blog/new">Add Blog</button>
+  </div>
+  <div class="form-group">
+    <input type="text" placeholder="Search by Title" [(ngModel)]="searchTitle"
+    (ngModelChange)="searchNotifier.next()" class="form-control">
+  </div>
+  <div class="alert" *ngIf="isGetBlogsFailed" style="color: green; padding: 8px 0px;">
+    Get Blogs failed! : {{errorMessage}}
+  </div>
+  <table class="table table-bordered">
+    <tr>
+      <th>
+        Title
+        <a class="float-right cursor-pointer" (click)="FilterSortFunction(sortByTitle, 'title')">
+          <i class="fa fa-fw fa-sort"></i>
+        </a>
+      </th>
+      <th>Description</th>
+      <th>
+        ModifyDate
+        <a class="float-right cursor-pointer" (click)="FilterSortFunction(sortByModifyDate, 'modify_date')">
+          <i class="fa fa-fw fa-sort"></i>
+        </a>
+      </th>
+      <th>
+        Status
+        <a class="float-right cursor-pointer" (click)="FilterSortFunction(sortByStatus, 'status')">
+          <i class="fa fa-fw fa-sort"></i>
+        </a>
+      </th>
+      <th>Category</th>
+      <th>
+        Author
+        <a class="float-right cursor-pointer" (click)="FilterSortFunction(sortByAuthor, 'author')">
+          <i class="fa fa-fw fa-sort"></i>
+        </a>
+      </th>
+      <th>Action</th>
+    </tr>
+    <tr *ngIf="getAllBlogDetails.length == 0">
+      <td colspan="6">Record Not Found.</td>
+    </tr>
+    <tr
+      *ngFor="let getAllBlogDetails_new of getAllBlogDetails | paginate: {itemsPerPage: itemsperpage, currentPage: p, totalItems: totalitems} let i=index;">
+      <td>{{getAllBlogDetails_new.title}}</td>
+      <td>{{getAllBlogDetails_new.description}}</td>
+      <td>{{getAllBlogDetails_new.modify_date | date: 'dd/mm/yyyy'}}</td>
+      <td>{{getAllBlogDetails_new.status}}</td>
+      <td>{{getAllBlogDetails_new.category}}</td>
+      <td>{{getAllBlogDetails_new.author.firstname}}</td>
+      <td>
+        <button routerLink="/blog/{{ getAllBlogDetails_new._id }}" class="btn-primary">Edit</button>
+        <button class="btn-warning ml-1" *ngIf="role == 'Admin'" (click)="removeSingleBlog(getAllBlogDetails_new._id);">Delete</button>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="12">
+
+        <div class="row">
+          <div class="col-md-3" style="margin: 0 auto;">
+            <select class="form-control input-sm" (change)="itemsPerPage($event.target.value)">
+              <option value="5">5</option>
+              <option value="10">10</option>
+              <option value="15">15</option>
+              <option value="20">20</option>
+            </select>
+          </div>
+
+          <div class="col-md-4" style="margin: 0 auto; text-align: center;">
+            <div class="dataTables_info showing_entries">
+              Showing {{ showing }} To {{ to }} Of {{ totalitems }} Entries
+            </div>
+          </div>
+
+          <div class="col-md-5" style="margin: 0 auto; text-align: right;">
+            <div class="dataTables_paginate paging_simple_numbers">
+              <pagination-controls (pageChange)="page($event); p = $event"></pagination-controls>
+            </div>
+          </div>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>

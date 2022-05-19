@@ -1,0 +1,34 @@
+<div class="col-md-6" style="margin: 0 auto;">
+  <div class="card card-container" style="border: none;">
+    <h1 style="margin: 20px 0; text-align: center; font-size: 36px; font-weight: 700;">Login</h1>
+    <form *ngIf="!isLoggedIn" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" name="email" [(ngModel)]="form.email" #email="ngModel" class="form-control" email required>
+        <div class="alert" *ngIf="email.errors && f.submitted" style="color: red;padding: 8px 0px;">
+          <div *ngIf="email.errors.required">Email is required</div>
+          <div *ngIf="email.errors.email">Email must be a valid email address</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" name="password" [(ngModel)]="form.password" #password="ngModel" class="form-control"
+          required>
+        <div class="alert" *ngIf="password.errors && f.submitted" style="color: red;padding: 8px 0px;">
+          <div *ngIf="password.errors.required">Password is required</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <button class="col-md-2 float-right btn btn-primary btn-block"> Login </button>
+      </div>
+      <div class="form-group">
+        <div class="alert" role="alert" *ngIf="f.submitted && isLoggedInFailed" style="color: grey; padding: 8px 0px;">
+          Login failed: {{errorMessage}}
+        </div>
+      </div>
+    </form>
+    <div class="alert alert-success" *ngIf="isLoggedIn">
+      Successfully Logged In.
+    </div>
+  </div>
+</div>
